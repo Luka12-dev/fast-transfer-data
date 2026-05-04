@@ -41,7 +41,6 @@
             overflow-x: hidden;
         }
 
-        /* Background effects */
         body::before {
             content: '';
             position: fixed;
@@ -84,7 +83,6 @@
             z-index: 1;
         }
 
-        /* Header */
         .header {
             margin-bottom: 40px;
         }
@@ -127,7 +125,6 @@
             letter-spacing: 0.2px;
         }
 
-        /* Glass card */
         .glass-card {
             background: rgba(16, 16, 16, 0.8);
             backdrop-filter: blur(24px);
@@ -136,7 +133,6 @@
             padding: 32px;
         }
 
-        /* Tabs */
         .mode-tabs {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -172,7 +168,6 @@
             background: rgba(255,255,255,0.03);
         }
 
-        /* Panels */
         .panel {
             display: none;
         }
@@ -181,7 +176,6 @@
             display: block;
         }
 
-        /* Drop Zone */
         .drop-zone {
             border: 1px dashed rgba(255,255,255,0.12);
             padding: 52px 24px;
@@ -251,7 +245,6 @@
             text-transform: uppercase;
         }
 
-        /* File Preview */
         .file-preview {
             display: none;
             background: rgba(255,255,255,0.02);
@@ -287,6 +280,9 @@
         .file-type-badge.gif { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.25); }
         .file-type-badge.webp { background: rgba(167, 139, 250, 0.15); color: #a78bfa; border: 1px solid rgba(167,139,250,0.25); }
         .file-type-badge.svg { background: rgba(251, 146, 60, 0.15); color: #fb923c; border: 1px solid rgba(251,146,60,0.25); }
+        /* New document badges */
+        .file-type-badge.pdf { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239,68,68,0.25); }
+        .file-type-badge.docx { background: rgba(37, 99, 235, 0.15); color: #3b82f6; border: 1px solid rgba(37,99,235,0.25); }
         .file-type-badge.default { background: rgba(255,255,255,0.05); color: var(--text-muted); border: 1px solid var(--border); }
 
         .file-meta {
@@ -309,7 +305,6 @@
             font-family: var(--font-mono);
         }
 
-        /* Progress Ring */
         .progress-ring {
             width: 44px;
             height: 44px;
@@ -345,7 +340,6 @@
             color: var(--accent);
         }
 
-        /* Speed bar */
         .speed-bar {
             display: none;
             margin-top: 14px;
@@ -365,7 +359,6 @@
             color: var(--accent);
         }
 
-        /* Buttons */
         .btn {
             width: 100%;
             padding: 14px 24px;
@@ -415,7 +408,6 @@
             background: #3db869;
         }
 
-        /* Room Code */
         .room-code-section {
             display: none;
             margin-top: 16px;
@@ -450,7 +442,6 @@
             margin-top: 10px;
         }
 
-        /* Code Input */
         .code-input-wrap {
             position: relative;
         }
@@ -481,7 +472,6 @@
             border-color: var(--accent);
         }
 
-        /* Status */
         .status {
             padding: 12px 16px;
             margin-top: 12px;
@@ -511,22 +501,32 @@
             border-color: #ef4444;
         }
 
-        /* Divider */
         .divider {
             height: 1px;
             background: var(--border);
             margin: 24px 0;
         }
 
-        /* Input (hidden) */
         input[type="file"] { display: none; }
 
-        /* Supported formats */
+        /* Format chips container with two rows */
+        .formats-section {
+            margin-top: 16px;
+        }
+
+        .formats-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
         .formats-row {
             display: flex;
             gap: 6px;
             flex-wrap: wrap;
-            margin-top: 16px;
         }
 
         .format-chip {
@@ -540,7 +540,25 @@
             background: transparent;
         }
 
-        /* Scrollbar */
+        /* Highlighted chips for document types */
+        .format-chip.pdf {
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.06);
+        }
+
+        .format-chip.docx {
+            border-color: rgba(59, 130, 246, 0.3);
+            color: #3b82f6;
+            background: rgba(59, 130, 246, 0.06);
+        }
+
+        .format-chip.limit {
+            border-color: rgba(68, 201, 117, 0.3);
+            color: var(--accent);
+            background: rgba(68, 201, 117, 0.06);
+        }
+
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: var(--border); }
@@ -588,19 +606,24 @@
                     <div class="drop-hint">or click to browse</div>
                 </div>
 
-                <div class="formats-row">
-                    <span class="format-chip">PNG</span>
-                    <span class="format-chip">JPG</span>
-                    <span class="format-chip">JPEG</span>
-                    <span class="format-chip">WEBP</span>
-                    <span class="format-chip">GIF</span>
-                    <span class="format-chip">SVG</span>
-                    <span class="format-chip">MP4</span>
-                    <span class="format-chip">MP3</span>
-                    <span class="format-chip">2GB MAX</span>
+                <!-- Updated formats section -->
+                <div class="formats-section">
+                    <div class="formats-row">
+                        <span class="format-chip">PNG</span>
+                        <span class="format-chip">JPG</span>
+                        <span class="format-chip">JPEG</span>
+                        <span class="format-chip">WEBP</span>
+                        <span class="format-chip">GIF</span>
+                        <span class="format-chip">SVG</span>
+                        <span class="format-chip">MP4</span>
+                        <span class="format-chip">MP3</span>
+                        <span class="format-chip pdf">PDF</span>
+                        <span class="format-chip docx">DOCX</span>
+                        <span class="format-chip limit">2GB MAX</span>
+                    </div>
                 </div>
 
-                <input type="file" id="fileInput" accept=".png,.jpg,.jpeg,.webp,.gif,.svg,.mp4,.mp3,image/*,video/mp4,audio/mpeg">
+                <input type="file" id="fileInput" accept=".png,.jpg,.jpeg,.webp,.gif,.svg,.mp4,.mp3,.pdf,.docx,image/*,video/mp4,audio/mpeg,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">
 
                 <div class="file-preview" id="filePreview">
                     <div class="file-row">
@@ -723,18 +746,33 @@
             if (e.target.files.length) handleFile(e.target.files[0]);
         });
 
-        // Accepted types
-        const ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'webp', 'gif', 'svg', 'mp4', 'mp3'];
+        // Updated allowed extensions — added pdf and docx
+        const ALLOWED_EXTENSIONS = ['png', 'jpg', 'jpeg', 'webp', 'gif', 'svg', 'mp4', 'mp3', 'pdf', 'docx'];
 
-        function getExt(name) {
-            return name.split('.').pop().toLowerCase();
+        // MIME type map for accurate detection
+        const MIME_MAP = {
+            'application/pdf': 'pdf',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'docx',
+        };
+
+        function getExt(file) {
+            // First try MIME type for documents (more reliable)
+            if (MIME_MAP[file.type]) return MIME_MAP[file.type];
+            // Fall back to file extension
+            return file.name.split('.').pop().toLowerCase();
         }
 
         function handleFile(file) {
-            const ext = getExt(file.name);
+            const ext = getExt(file);
 
             if (!ALLOWED_EXTENSIONS.includes(ext)) {
-                showStatus(sendStatus, 'Unsupported file type. Allowed: PNG, JPG, JPEG, WEBP, GIF, SVG, MP4, MP3', 'error');
+                showStatus(sendStatus, 'Unsupported file type. Allowed: PNG, JPG, JPEG, WEBP, GIF, SVG, MP4, MP3, PDF, DOCX', 'error');
+                return;
+            }
+
+            // 2 GB size guard
+            if (file.size > 2 * 1024 * 1024 * 1024) {
+                showStatus(sendStatus, 'File exceeds the 2 GB limit.', 'error');
                 return;
             }
 
@@ -742,7 +780,7 @@
             fileName.textContent = file.name;
             fileSize.textContent = formatSize(file.size);
 
-            // Badge
+            // Badge — use CSS class for colour
             fileTypeBadge.textContent = ext.toUpperCase();
             fileTypeBadge.className = 'file-type-badge ' + ext;
 
@@ -936,7 +974,9 @@
         });
 
         function assembleFile() {
-            const blob = new Blob(receivedFile.chunks, { type: receivedFile.metadata.mimeType });
+            // Use the MIME type sent from the sender for correct file reconstruction
+            const mimeType = receivedFile.metadata.mimeType || '';
+            const blob = new Blob(receivedFile.chunks, { type: mimeType });
             receivedFile.blob = blob;
             receivedFile.name = receivedFile.metadata.name;
         }
